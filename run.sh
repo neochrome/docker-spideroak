@@ -18,9 +18,22 @@ function scurl () {
 	printf 'GET %s HTTP/1.0\n\n' $1 | ncat -U /docker.sock | sed -r '1,/^\r?$/d'
 }
 
-if [[ ! -d "$HOME/.config/SpiderOakONE" ]]; then
-	log 'no previous configuration found, launching setup'
-	SpiderOak --setup=-
+function not_configured () {
+	return [[ "$(SpiderOak --userinfo)" =~ "New User Setup$" ]]
+}
+
+if [[ not_configured ]]; then
+	log 'no previous configuration found'
+	if [[ -t 1 ]]; then
+		log 'launching interactive setup'
+		SpiderOak --setup=-
+	else
+		log 'taking configuration from stdin'
+		cat > /config.json
+		SpiderOak --setup=/config.json
+		rm /config.json
+	fi
+	exit 0
 fi
 
 log 'resetting included folders'
