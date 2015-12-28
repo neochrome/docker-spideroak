@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 export HOME=/spideroak
 mkdir -p $HOME
 
