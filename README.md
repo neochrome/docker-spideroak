@@ -27,7 +27,7 @@ exists, otherwise non-zero.
 #### --configure
 May be used to either launch an interactive setup/configuration session (same as
 `--setup=-`, or to read settings formatted as json on stdin by piping it to the
-container: `cat config.json | docker run -t ...`
+container: `cat config.json | docker run -i ...`
 
 Example configuration file:
 ```json
