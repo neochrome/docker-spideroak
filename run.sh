@@ -19,7 +19,7 @@ function scurl () {
 }
 
 function configured () {
-	[[ "$(SpiderOak --userinfo)" =~ 'New User Setup$' ]]
+	[[ ! "$(SpiderOak --userinfo)" =~ 'New User Setup$' ]]
 }
 
 case "$1" in
