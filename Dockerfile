@@ -4,12 +4,11 @@ MAINTAINER Johan Stenqvist <johan@stenqvist.net>
 LABEL Description="SpiderOAK client"
 
 RUN \
-	yum -y install nmap-ncat \
-	&& curl -Ls 'https://spideroak.com/getbuild?platform=fedora&arch=x86_64' -o spideroak.rpm \
+	curl -Ls 'https://spideroak.com/getbuild?platform=fedora&arch=x86_64' -o spideroak.rpm \
 		&& rpm -i spideroak.rpm \
 		&& rm -f spideroak.rpm \
-	&& curl -Ls https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -o /bin/jq \
-		&& chmod +x /bin/jq
+	&& curl -Ls https://github.com/neochrome/lsdvol/releases/download/v0.2.0/lsdvol -o /bin/lsdvol \
+		&& chmod +x /bin/lsdvol
 
 COPY ./run.sh .
 ENTRYPOINT ["./run.sh"]
