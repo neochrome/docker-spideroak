@@ -30,6 +30,7 @@ clean: remove
 debug: remove build volumes
 	@docker run -it --name spideroak \
 		-v /var/run/docker.sock:/docker.sock:ro \
+		-v $$PWD/run.sh:/run.sh \
 		--volumes-from spideroak-settings \
 		--volumes-from spideroak-archive \
 		--entrypoint /bin/sh \

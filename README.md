@@ -27,20 +27,17 @@ If settings should be persisted across container re-creation, a VOLUME
 Used to check if a proper configuration exists. Exits with zero if a configuration
 exists, otherwise non-zero.
 
-#### --configure
-May be used to either launch an interactive setup/configuration session (same as
-`--setup=-`, or to read settings formatted as json on stdin by piping it to the
-container: `cat config.json | docker run -i ...`
-
-Example configuration file:
-```json
-{
-	"username": "username",
-	"password": "password",
-	"reinstall": true,
-	"device_name": "device"
-}
+#### configure
+May be used to specify configuration for device setup on the command line.
+Usage:
 ```
-See <https://spideroak.com/faq/how-do-i-set-up-a-new-device-from-the-command-line> for more info.
+$ docker run ... neochrome/spideroak \
+	configure \
+		--user <username> \
+		--password <password> \
+		--device-name <device name> \
+		[--no-create]
+```
+If no existing device is found, a new one is created unless `--no-create` is specified.
 
 [SpiderOak]: https://spideroak.com
