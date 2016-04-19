@@ -7,7 +7,7 @@ RUN \
 	curl -Ls 'https://spideroak.com/getbuild?platform=fedora&arch=x86_64' -o spideroak.rpm \
 		&& rpm -i spideroak.rpm \
 		&& rm -f spideroak.rpm \
-	&& curl -Ls https://github.com/neochrome/lsdvol/releases/download/v0.2.0/lsdvol -o /bin/lsdvol \
+	&& curl -Ls https://github.com/neochrome/lsdvol/releases/download/v0.2.1/lsdvol -o /bin/lsdvol \
 		&& chmod +x /bin/lsdvol
 
 COPY ./run.sh .
